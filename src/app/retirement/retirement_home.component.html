@@ -1,0 +1,23 @@
+<section class="retirementHomeCalculator">
+    <div>
+
+    </div>
+    <h1>Sample Text</h1>
+    <div>
+        <form #formValues="ngForm" (ngSubmit)="onSubmit(formValues)" novalidate>
+            <div>
+                <label>Expected Inflation Rate : </label>
+                <input name="inflation" ngModel required #inflation="ngModel" [(ngModel)]="example"> 
+            </div>
+            <div>
+                <label>Expexted Return : </label>
+                <input name="returnRate" ngModel >
+            </div>
+            <div>
+                <label>Current Monthly Expense : </label>
+                <input name="expense" ngModel>
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+</section>

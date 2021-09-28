@@ -1,0 +1,14 @@
+<section class="salary-container">
+    <div class="top_section">
+        <div class="salaryConsolidated">
+            <h1 class="salary_values">Total Earned : {{total}}</h1> 
+            <h1 class="salary_values">No Of Months : {{count}}</h1>
+            <h1 class="salary_values">Average : {{average}}</h1>
+            <h1 class="salary_values">Highest : {{maxSalary}}</h1> 
+            <h1 class="salary_values">Lowest : {{minSalary}}</h1>
+        </div>
+    </div>     
+    <div class="yearly_section">
+        <salary-yearly *ngFor="let yearlyData of data" [yearlyData]="yearlyData" ></salary-yearly>
+    </div>
+</section>
