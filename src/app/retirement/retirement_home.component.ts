@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import netWorthData from 'D:/O/Riyaz/Statements/Projects/AssetManagement/constants/netWorthDetails.json';
+import netWorthData from 'G:/Other computers/My Laptop/Statements/Projects/AssetManagement/constants/netWorthDetails.json';
 
 @Component({
   selector: 'retirement-home',
@@ -10,6 +10,7 @@ import netWorthData from 'D:/O/Riyaz/Statements/Projects/AssetManagement/constan
 export class RetirementHomeComponent implements OnInit {
     data:any;
     example:string ="test value";
+    
     ngOnInit(): void {
         this.data = netWorthData.data;
     }

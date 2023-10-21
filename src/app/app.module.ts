@@ -11,6 +11,7 @@ import { SalaryYearlyComponent } from './salary/salary_yearly/salary_yearly.comp
 import { RetirementHomeComponent } from './retirement/retirement_home.component';
 import { FormsModule } from '@angular/forms';
 import { UtilService } from './services/util.service';
+import { SalaryChartComponent } from './salary/salary_chart/salary_chart.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +19,15 @@ import { UtilService } from './services/util.service';
     NetWorthComponent,
     SalaryHomeComponent,
     SalaryYearlyComponent,
-    RetirementHomeComponent
+    RetirementHomeComponent,
+    SalaryChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     UtilService

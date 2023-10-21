@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import salaryData from 'D:/O/Riyaz/Statements/Projects/AssetManagement/constants/salaryDetails.json';
+import salaryData from 'G:/Other computers/My Laptop/Statements/Projects/AssetManagement/constants/salaryDetails.json';
 import { UtilService } from '../services/util.service';
 
 @Component({
