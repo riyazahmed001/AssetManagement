@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NetWorthComponent } from './net_worth/net-worth/net-worth.component';
+import { NetWorthComponent } from './net_worth/net-worth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SalaryHomeComponent } from './salary/salary_home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

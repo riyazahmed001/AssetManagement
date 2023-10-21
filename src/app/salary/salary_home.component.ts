@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import salaryData from 'G:/Other computers/My Laptop/Statements/Projects/AssetManagement/constants/salaryDetails.json';
 import { UtilService } from '../services/util.service';
+import { SalaryData } from '../models/salaryData';
+import { YearlyData } from '../models/YearlyData';
 
 @Component({
   selector: 'salary-home',
@@ -9,7 +11,7 @@ import { UtilService } from '../services/util.service';
 })
 export class SalaryHomeComponent implements OnInit {
 
-    data:any;
+    data:SalaryData;
     total:number = 0;
     count: number = 0;
     average: any ;
@@ -17,10 +19,10 @@ export class SalaryHomeComponent implements OnInit {
     minSalary: any;
 
     constructor(private utilService:UtilService) {
+        this.data = salaryData;
     }
 
     ngOnInit(): void {
-      this.data = salaryData.data;
       let total = this.getTotalSalary(this.data);
       this.total = this.utilService.getCurrencyFormat(total);
       this.count = this.getTotalCount(this.data);
@@ -31,7 +33,7 @@ export class SalaryHomeComponent implements OnInit {
       this.minSalary = this.utilService.getCurrencyFormat(this.minSalary);
     }
 
-    public getHighestLowest(data: any) {
+    public getHighestLowest({data}: {data : YearlyData[]}) {
         this.maxSalary = 0;
         this.minSalary = Number.MAX_VALUE;
         for(const year in data)
@@ -48,26 +50,18 @@ export class SalaryHomeComponent implements OnInit {
     }
 
 
-    public getTotalSalary(data: any): any {
-        let total = 0 ;
-        for(const year in data)
-        {
-            for(const salary in data[year].salary) {
-                total += parseInt(data[year].salary[salary]);
-            }
-        }
-        return total;
+    public getTotalSalary({data}: {data : YearlyData[]}): number {
+        const result =  data.reduce((total: number, year: YearlyData)=> {
+            return total + this.utilService.getTotalSalary(year);
+        }, 0)
+        return result;
     }
 
-    public getTotalCount(data: any): any {
-        let count = 0 ;
-        for(const year in data)
-        {
-            for(const salary in data[year].salary) {
-                count = parseInt(data[year].salary[salary]) > 0 ? ++count :count;
-            }
-        }
-        return count;
-    }
+    public getTotalCount({data}: {data : YearlyData[]}): any {
+        const result =  data.reduce((total: number, year: YearlyData)=> {
+            return total + this.utilService.getTotalCount(year);
+        }, 0);
 
+        return result;
+    }
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NetWorthComponent } from './net_worth/net-worth/net-worth.component';
+import { NetWorthComponent } from './net_worth/net-worth.component';
 import { RetirementHomeComponent } from './retirement/retirement_home.component';
 import { SalaryHomeComponent } from './salary/salary_home.component';
 
