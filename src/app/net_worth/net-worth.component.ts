@@ -11,24 +11,37 @@ import { NetworthYearlyData } from 'src/app/models/NetworthYearlyData';
 export class NetWorthComponent implements OnInit {
   data: NetworthData;
   currentNetworth: number = 0;
+  timesAnnualExpense: string = "";
+  lastEntryInNetworth: NetworthYearlyData;
 
   constructor(private utilService: UtilService) {
     this.data = netWorthData;
+    this.lastEntryInNetworth = netWorthData.data.slice(-1)[0];
+  }
+
+  public get currentYearExpense() {
+    return this.utilService.getCurrencyFormat(this.lastEntryInNetworth?.currentYearExpense);
   }
 
   ngOnInit(): void {
     this.currentNetworth = this.utilService.getCurrencyFormat(this.getCurrentNetworth());
+    this.timesAnnualExpense = this.getTimesAnnualExpense();
   }
 
   public getCurrentNetworth(): number {
-    const result = this.data.data.reduce((accumulator:number, currentYear: NetworthYearlyData)=> {
-      accumulator = currentYear.values.reduce((total:number, value:string) => {
+    const result = this.lastEntryInNetworth.values.reduce((total:number, value:string) => {
         total += parseInt(value);
         return total;
       },0);
-      return accumulator;
-    },0);
 
     return result;
+  }
+
+  public getTimesAnnualExpense(): string {
+    const result = this.lastEntryInNetworth.values.reduce((total:number, value:string) => {
+        total += parseInt(value);
+        return total;
+    },0);
+    return (result/parseFloat(this.lastEntryInNetworth.currentYearExpense)).toFixed(2);
   }
 }

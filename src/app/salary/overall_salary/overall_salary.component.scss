@@ -1,0 +1,37 @@
+.yearlyDataSection{
+    border-radius: 20px;
+    margin-top: 20px;
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.yearData{
+    display: inline;
+}
+.yearDataFields{
+    display: inline;
+    color: turquoise;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.close{
+    float:right;
+    cursor: pointer;
+}
+.yearlyDetailsContainer{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.yearlyDetails{
+    font-size: 18px;
+    margin:auto;
+    text-align:center;
+    padding: 10px;
+}

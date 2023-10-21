@@ -1,10 +1,4 @@
-.top_section{
-    margin-top:10px;
-    background-color: grey;
-    border-radius: 25px;
-}
-.salaryConsolidated{
-    
+.networthConsolidated{
     color: white;
     text-align: center;
     display: flex;
@@ -13,9 +7,21 @@
     align-items: center;
 }
 
-.salary_values{
+.values{
     font-size: 18px;
     margin:auto;
     text-align:center;
     padding: 10px;
+}
+
+.top_section {
+    margin-top:10px;
+    background-color: #666666;;
+    border-radius: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.networth-container {
+    margin-top:30px;
 }
