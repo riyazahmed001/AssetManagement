@@ -1,0 +1,13 @@
+<section class="yearlyDataSection">
+    <div class="yearData">
+        <h1 class="yearDataFields" (click)="showCloseButton()">{{ lastEntryInNetworth.year }}</h1>
+        <div *ngIf="closeButton">
+            <div class="networthConsolidated">
+                <h1 class="values">Total Networth : {{ currentNetworth }}</h1> 
+                <h1 class="values">Annual Expense : {{ currentYearExpense }}</h1>
+                <h1 class="values">Times Annual Expense : {{ timesAnnualExpense }}</h1>
+            </div>
+            <networth_chart [lastEntryInNetworth]="lastEntryInNetworth"></networth_chart>
+        </div>
+    </div> 
+</section>

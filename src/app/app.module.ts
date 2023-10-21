@@ -10,11 +10,11 @@ import { RetirementHomeComponent } from './retirement/retirement_home.component'
 import { FormsModule } from '@angular/forms';
 import { UtilService } from './services/util.service';
 import { SalaryModule } from './salary/salary.module';
+import { NetworthModule } from './net_worth/networth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NetWorthComponent,
     RetirementHomeComponent,
   ],
   imports: [
@@ -23,7 +23,8 @@ import { SalaryModule } from './salary/salary.module';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    SalaryModule
+    SalaryModule,
+    NetworthModule
   ],
   providers: [
     UtilService

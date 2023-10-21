@@ -13,8 +13,6 @@ export class OverAllChartComponent implements OnInit {
   @Input()
   public data!: SalaryData;
 
-  public closeButton: boolean = false;
-
   constructor(private utilService: UtilService) {
     Chart.register(...registerables);
   }

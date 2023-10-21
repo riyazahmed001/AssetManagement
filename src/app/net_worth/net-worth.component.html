@@ -5,6 +5,7 @@
             <h1 class="values">Annual Expense : {{ currentYearExpense }}</h1>
             <h1 class="values">Times Annual Expense : {{ timesAnnualExpense }}</h1>
         </div>
+        <yearly_networth *ngFor="let yearlyData of data.data" [lastEntryInNetworth]="yearlyData" ></yearly_networth>
     </div>
 
 </section>
