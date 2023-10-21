@@ -1,0 +1,8 @@
+<section class="yearlyDataSection">
+    <div class="yearData">
+        <h1 class="yearDataFields" (click)="showCloseButton()">Overall Stats</h1>
+        <div *ngIf="closeButton">
+            <ng-content></ng-content>
+        </div>
+    </div> 
+</section>
