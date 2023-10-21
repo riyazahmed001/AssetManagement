@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Chart, registerables} from 'node_modules/chart.js';
+import { YearlyData } from 'src/app/models/YearlyData';
 import { UtilService } from 'src/app/services/util.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { UtilService } from 'src/app/services/util.service';
 })
 export class SalaryChartComponent implements OnInit {
 
-    @Input() public yearlyData:any;
+    @Input()
+    public yearlyData! :YearlyData;
     public year:string;
 
     constructor(private utilService:UtilService) {

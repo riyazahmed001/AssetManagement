@@ -16,7 +16,7 @@ export class UtilService {
         return res;
     }
     
-    getTotalSalary(yearlyData: YearlyData) {
+    getTotalSalary(yearlyData: YearlyData): number {
         const total = yearlyData.salary.reduce((currentTotal:number , salary: string)=>{
             return currentTotal + parseInt(salary);
         }, 0)
@@ -24,12 +24,15 @@ export class UtilService {
         return total;
     }
 
-    getTotalCount(yearlyData: YearlyData): any {
+    getTotalCount(yearlyData: YearlyData): number {
         const count = yearlyData.salary.reduce((currentTotal:number , salary: string)=>{
             const count =  parseInt(salary) > 0 ? ++currentTotal: currentTotal;
             return count;
         }, 0);
-
         return count;
+    }
+
+    getAverage(yearlyData: YearlyData): string {
+        return (this.getTotalSalary(yearlyData)/this.getTotalCount(yearlyData)).toFixed(2);
     }
 }

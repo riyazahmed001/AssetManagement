@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import salaryData from 'G:/Other computers/My Laptop/Statements/Projects/AssetManagement/constants/salaryDetails.json';
+import jsonData from 'G:/Other computers/My Laptop/Statements/Projects/AssetManagement/constants/salaryDetails.json';
 import { UtilService } from '../services/util.service';
-import { SalaryData } from '../models/salaryData';
+import { SalaryData } from '../models/SalaryData';
 import { YearlyData } from '../models/YearlyData';
 
 @Component({
@@ -19,12 +19,12 @@ export class SalaryHomeComponent implements OnInit {
     minSalary: any;
 
     constructor(private utilService:UtilService) {
-        this.data = salaryData;
+        this.data = jsonData;
     }
 
     ngOnInit(): void {
       let total = this.getTotalSalary(this.data);
-      this.total = this.utilService.getCurrencyFormat(total);
+      this.total = this.utilService.getCurrencyFormat(this.getTotalSalary(this.data));
       this.count = this.getTotalCount(this.data);
       let average =( total / this.count ).toFixed();
       this.average = this.utilService.getCurrencyFormat(average);

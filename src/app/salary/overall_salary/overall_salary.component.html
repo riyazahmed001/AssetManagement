@@ -4,6 +4,7 @@
         <h1 class="yearDataFields" (click)="showCloseButton()">Overall</h1>
         <div *ngIf="closeButton">
             <ng-content></ng-content>
+            <overall_chart [data]="data"></overall_chart>
         </div>
     </div> 
 </section>
