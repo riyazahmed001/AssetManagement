@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UtilService } from 'src/app/services/util.service';
-import { YearlyData } from '../../models/YearlyData';
+import { SalaryYearlyData } from '../../models/SalaryYearlyData';
 
 @Component({
   selector: 'salary-yearly',
@@ -9,7 +9,7 @@ import { YearlyData } from '../../models/YearlyData';
 })
 export class SalaryYearlyComponent implements OnInit {
   @Input()
-  public yearlyData!: YearlyData;
+  public yearlyData!: SalaryYearlyData;
 
   public closeButton: boolean = false;
   total: any;
@@ -17,7 +17,8 @@ export class SalaryYearlyComponent implements OnInit {
   average: any;
   maxSalary: any;
   minSalary: any;
-
+  totalSavings: any;
+  savingsPercentage: any;
   constructor(private utilService: UtilService) {}
 
   ngOnInit(): void {
@@ -30,6 +31,11 @@ export class SalaryYearlyComponent implements OnInit {
     this.getHighestLowest(this.yearlyData);
     this.maxSalary = this.utilService.getCurrencyFormat(this.maxSalary);
     this.minSalary = this.utilService.getCurrencyFormat(this.minSalary);
+
+    let totalSavings = this.utilService.getTotalSavings(this.yearlyData)
+    this.totalSavings = this.utilService.getCurrencyFormat(totalSavings);
+
+    this.savingsPercentage = ((totalSavings * 100)/total).toFixed(2);
   }
 
   getHighestLowest(yearlyData: any) {
@@ -49,10 +55,7 @@ export class SalaryYearlyComponent implements OnInit {
   }
 
   public showCloseButton() {
-    this.closeButton = true;
+    this.closeButton = !this.closeButton;
   }
 
-  public closeExpandCollapse() {
-    this.closeButton = false;
-  }
 }

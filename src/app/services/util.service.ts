@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { YearlyData } from "../models/YearlyData";
+import { SalaryYearlyData } from "../models/SalaryYearlyData";
 
 @Injectable()
 export class UtilService {
@@ -16,7 +16,7 @@ export class UtilService {
         return res;
     }
     
-    getTotalSalary(yearlyData: YearlyData): number {
+    getTotalSalary(yearlyData: SalaryYearlyData): number {
         const total = yearlyData.salary.reduce((currentTotal:number , salary: string)=>{
             return currentTotal + parseInt(salary);
         }, 0)
@@ -24,7 +24,7 @@ export class UtilService {
         return total;
     }
 
-    getTotalCount(yearlyData: YearlyData): number {
+    getTotalCount(yearlyData: SalaryYearlyData): number {
         const count = yearlyData.salary.reduce((currentTotal:number , salary: string)=>{
             const count =  parseInt(salary) > 0 ? ++currentTotal: currentTotal;
             return count;
@@ -32,7 +32,27 @@ export class UtilService {
         return count;
     }
 
-    getAverage(yearlyData: YearlyData): string {
+    getAverage(yearlyData: SalaryYearlyData): string {
         return (this.getTotalSalary(yearlyData)/this.getTotalCount(yearlyData)).toFixed(2);
+    }
+
+    getTotalSavings(yearlyData: SalaryYearlyData): number {
+        const total = yearlyData.savings?.reduce((currentTotal:number , savings: string)=>{
+            return currentTotal + parseInt(savings);
+        }, 0)
+        
+        return total|| 0;
+    }
+
+    getTotalCountSavings(yearlyData: SalaryYearlyData): number {
+        const count = yearlyData.savings?.reduce((currentTotal:number , savings: string)=>{
+            const count =  parseInt(savings) > 0 ? ++currentTotal: currentTotal;
+            return count;
+        }, 0);
+        return count|| 0;
+    }
+
+    getAverageSavings(yearlyData: SalaryYearlyData): string {
+        return ((this.getTotalSavings(yearlyData)/this.getTotalCountSavings(yearlyData)) || 0).toFixed(2);
     }
 }

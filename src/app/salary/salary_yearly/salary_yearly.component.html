@@ -1,13 +1,14 @@
 <section class="yearlyDataSection">
-    <span class="close" *ngIf="closeButton" (click)="closeExpandCollapse()">&times;</span>
     <div class="yearData">
         <h1 class="yearDataFields" (click)="showCloseButton()">{{yearlyData.year}}</h1>
         <div *ngIf="closeButton">
             <div  class="yearlyDetailsContainer" >
-                <h1 class="yearlyDetails">Total : {{total}}</h1>
-                <h1 class="yearlyDetails">Average : {{average}}</h1>
-                <h1 class="yearlyDetails">Highest : {{maxSalary}}</h1>
-                <h1 class="yearlyDetails">Lowest : {{minSalary}}</h1>
+                <h1 class="yearlyDetails">Total : {{ total }}</h1>
+                <h1 class="yearlyDetails">Savings : {{ totalSavings }}</h1>
+                <h1 class="yearlyDetails">Savings% : {{ savingsPercentage }}</h1>
+                <h1 class="yearlyDetails">Average : {{ average }}</h1>
+                <h1 class="yearlyDetails">Highest : {{ maxSalary }}</h1>
+                <h1 class="yearlyDetails">Lowest : {{  minSalary }}</h1>
             </div>
             <salary-chart [yearlyData]="yearlyData"></salary-chart>
         </div>

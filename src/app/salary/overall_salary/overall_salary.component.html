@@ -1,7 +1,6 @@
 <section class="yearlyDataSection">
-    <span class="close" *ngIf="closeButton" (click)="closeExpandCollapse()">&times;</span>
     <div class="yearData">
-        <h1 class="yearDataFields" (click)="showCloseButton()">Overall</h1>
+        <h1 class="yearDataFields" (click)="showCloseButton()">OverAll Stats</h1>
         <div *ngIf="closeButton">
             <ng-content></ng-content>
             <overall_chart [data]="data"></overall_chart>

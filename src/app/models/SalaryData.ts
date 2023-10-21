@@ -1,5 +1,5 @@
-import { YearlyData } from "./YearlyData";
+import { SalaryYearlyData } from "./SalaryYearlyData";
 
 export interface SalaryData {
-    data: YearlyData[]
+    data: SalaryYearlyData[]
 }

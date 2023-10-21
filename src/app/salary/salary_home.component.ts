@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import jsonData from 'G:/Other computers/My Laptop/Statements/Projects/AssetManagement/constants/salaryDetails.json';
 import { UtilService } from '../services/util.service';
 import { SalaryData } from '../models/SalaryData';
-import { YearlyData } from '../models/YearlyData';
+import { SalaryYearlyData } from '../models/SalaryYearlyData';
 
 @Component({
   selector: 'salary-home',
@@ -13,6 +13,8 @@ export class SalaryHomeComponent implements OnInit {
 
     data:SalaryData;
     total:number = 0;
+    savingsTotal: number = 0;
+    savingsPercentage: any = "0";
     count: number = 0;
     average: any ;
     maxSalary: any;
@@ -31,9 +33,13 @@ export class SalaryHomeComponent implements OnInit {
       this.getHighestLowest(this.data);
       this.maxSalary = this.utilService.getCurrencyFormat(this.maxSalary);
       this.minSalary = this.utilService.getCurrencyFormat(this.minSalary);
+
+      let savingsTotal = this.getTotalSavings();
+      this.savingsTotal = this.utilService.getCurrencyFormat(savingsTotal);
+      this.savingsPercentage = ((savingsTotal * 100)/total).toFixed(2);
     }
 
-    public getHighestLowest({data}: {data : YearlyData[]}) {
+    public getHighestLowest({data}: {data : SalaryYearlyData[]}) {
         this.maxSalary = 0;
         this.minSalary = Number.MAX_VALUE;
         for(const year in data)
@@ -49,16 +55,24 @@ export class SalaryHomeComponent implements OnInit {
         }
     }
 
+    public getTotalSavings(): number {
+        const result = this.data.data.reduce((accumulator:number, yearlydata:SalaryYearlyData)=> {
+            accumulator += this.utilService.getTotalSavings(yearlydata);
+            return accumulator;
+        }, 0);
 
-    public getTotalSalary({data}: {data : YearlyData[]}): number {
-        const result =  data.reduce((total: number, year: YearlyData)=> {
+        return result;
+    }
+
+    public getTotalSalary({data}: {data : SalaryYearlyData[]}): number {
+        const result =  data.reduce((total: number, year: SalaryYearlyData)=> {
             return total + this.utilService.getTotalSalary(year);
         }, 0)
         return result;
     }
 
-    public getTotalCount({data}: {data : YearlyData[]}): any {
-        const result =  data.reduce((total: number, year: YearlyData)=> {
+    public getTotalCount({data}: {data : SalaryYearlyData[]}): any {
+        const result =  data.reduce((total: number, year: SalaryYearlyData)=> {
             return total + this.utilService.getTotalCount(year);
         }, 0);
 

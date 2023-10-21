@@ -17,10 +17,6 @@ export class OverAllSalaryComponent implements OnInit {
   ngOnInit(): void {}
 
   public showCloseButton() {
-    this.closeButton = true;
-  }
-
-  public closeExpandCollapse() {
-    this.closeButton = false;
+    this.closeButton = !this.closeButton;
   }
 }
