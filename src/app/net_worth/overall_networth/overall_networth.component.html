@@ -3,6 +3,7 @@
         <h1 class="yearDataFields" (click)="showCloseButton()">Overall Stats</h1>
         <div *ngIf="closeButton">
             <ng-content></ng-content>
+            <overall_networth_chart [data]="data"></overall_networth_chart>
         </div>
     </div> 
 </section>

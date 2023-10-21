@@ -4,6 +4,7 @@ import { NetWorthComponent } from './net-worth.component';
 import { YearlyNetworthComponent } from './yearly_networth/yearly_networth.component';
 import { NetworthChartComponent } from './networth_chart/networth_chart.component';
 import { OverallNetworthComponent } from './overall_networth/overall_networth.component';
+import { OverAllNetworthChart } from './overall_networth_chart/overall_networth_chart.component';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import { OverallNetworthComponent } from './overall_networth/overall_networth.co
         NetWorthComponent,
         YearlyNetworthComponent,
         NetworthChartComponent,
-        OverallNetworthComponent
+        OverallNetworthComponent,
+        OverAllNetworthChart
     ]
   })
 export class NetworthModule { }
